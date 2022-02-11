@@ -1,0 +1,23 @@
+* {
+    background-color: black;
+    color: white;
+    padding: 30px;
+    margin: 30px;
+}
+
+#items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.piece {
+    height: 100;
+    width: 10;
+    color: green;
+    padding: 30px;
+    margin: 30px;
+    border-style: solid;
+    border-radius: 50%;
+    border-color: white;
+}
