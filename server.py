@@ -1,6 +1,7 @@
 from flask import Flask, render_template, session, redirect, request
 
 app = Flask(__name__)
+app.secret_key = "Could be whatever I want. Really."
 
 @app.route('/')
 def root():
@@ -9,13 +10,26 @@ def root():
 # never render on a post
 @app.route('/users', methods=['POST'])
 def user_post():
-    print("You jsut hit submit")
-    print(request.form)
+    print("You just hit submit")
+    
+    
+    print(request.form['name'])
+    print(request.form['email'])
+
+
+    # add form data into session
+    session['name'] = request.form['name']
+    session['email'] = request.form['email']
+
+    print(session['name'])
+    print(session['email'])
+
     return redirect("/afterPost")
 
 @app.route('/afterPost')
 def from_post():
-    return render_template("second.html")
+    print("Hitting new route after post")
+    return render_template("second.html", n = session['name'], e = session['email'])
 
 
 if __name__ == "__main__":
